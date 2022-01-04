@@ -5,8 +5,8 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://101.43.122.210:3306/yeb?userUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
-    username: root
-    password: 1998@ljs
+    username: ****
+    password: ****
     hikari:
       #连接池名
       pool-name: DateHikariCP
@@ -35,7 +35,7 @@ spring:
         max-wait: 10000ms  #最大等待时间
         max-idle: 200 #最大空闲连接
         min-idle: 5  #最小空闲连接
-    password: 1998@ljs
+    password: *****
 
 
 # Mybatis-plus配置
