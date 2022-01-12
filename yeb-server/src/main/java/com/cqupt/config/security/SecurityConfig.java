@@ -2,7 +2,7 @@ package com.cqupt.config.security;
 
 import com.cqupt.pojo.Admin;
 import com.cqupt.service.IAdminService;
-import net.bytebuddy.asm.Advice;
+import com.cqupt.service.impl.AdminServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -67,7 +67,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        //使用Jwt，不需要csrf
+        //使用Jwt，不需要csrf(跨站请求伪造)
         http.csrf()
                 .disable()
                 //基于token，不需要session
@@ -114,9 +114,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public UserDetailsService userDetailsService() {
         return username -> {
-            Admin admin = adminService.getAdminByUsername(username);
+            Admin admin = new AdminServiceImpl().getAdminByUsername(username);
             if (admin != null){
-                admin.setRoles(adminService.getRoles(admin.getId()));
+                admin.setRoles(new AdminServiceImpl().getRoles(admin.getId()));
                 return admin;
             }
             throw new UsernameNotFoundException("用户名和密码不正确");

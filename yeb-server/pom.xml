@@ -112,6 +112,12 @@
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-pool2</artifactId>
     </dependency>
+    <!--  EasyPOI依赖  -->
+    <dependency>
+      <groupId>cn.afterturn</groupId>
+      <artifactId>easypoi-spring-boot-starter</artifactId>
+      <version>4.1.3</version>
+    </dependency>
 
   </dependencies>
 </project>
